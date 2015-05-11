@@ -51,8 +51,8 @@ class Extension extends \Bolt\BaseExtension
      **/
     public function initialize()
     {
-        $this->addTwigFunction('md5', 'toolboxMD5');
-        $this->addTwigFunction('remove_record', 'toolboxRemoveRecords');
+        $this->addTwigFunction('md5', 'encryptString');
+        $this->addTwigFunction('remove_record', 'removeRecords');
     }
 
     /**
@@ -62,7 +62,7 @@ class Extension extends \Bolt\BaseExtension
      * @access public
      * @author Johnathan Pulos
      **/
-    public function toolboxMD5($str = "")
+    public function encryptString($str = "")
     {
         return md5($str);
     }
@@ -76,7 +76,7 @@ class Extension extends \Bolt\BaseExtension
      * @access public
      * @author Johnathan Pulos
      **/
-    public function toolboxRemoveRecords($objectArray, $idArray)
+    public function removeRecords($objectArray, $idArray)
     {
         $newObjectArray = array();
         foreach ($objectArray as $currentObject) {
