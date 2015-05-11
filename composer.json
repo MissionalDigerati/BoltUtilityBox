@@ -1,0 +1,26 @@
+{
+  "name": "missionaldigerati/boltutilitybox",
+  "description": "Bolt Utility Box contains various utility methods for Bolt CMS.",
+  "type": "bolt-extension",
+  "keywords": [
+    "twig",
+    "utility",
+    "methods"
+  ],
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+      "name": "Missional Digerati",
+      "email": "johnathan@missionaldigerati.org",
+      "homepage": "http://missionaldigerati.org"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "init.php"
+    ],
+    "psr-4" : {
+      "Bolt\\Extension\\MissionalDigerati\\RelatedSort\\" : ""
+    }
+  }
+}
