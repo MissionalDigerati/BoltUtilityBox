@@ -1,8 +1,10 @@
 Bolt Utility Box
 ================
 
-"Bolt Utility Box" contains various utility methods for [Bolt CMS](http://bolt.cm).
+"Bolt Utility Box" contains various utility methods for [Bolt CMS](http://bolt.cm).  Current twig functions:
 
+- `md5('string')` converts the given string to an MD5 hash
+- `remove_record(array, arrayIds)` removes the arrayIds from the given array.
 
 Development Notes
 -----------------
