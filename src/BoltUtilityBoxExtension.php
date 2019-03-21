@@ -47,18 +47,18 @@ class BoltUtilityBoxExtension extends SimpleExtension
     /**
      * Sorts an array of objects using the value of the array key ($sortKey)
      *
-     * @param array $related Bolt's related() results
+     * @param array $data Bolt's related() results
      * @param string $sortKey the key to sort by
      * @param string $order which order to sort (asc, desc) default: asc
      * @return array the sorted objects
      * @access public
      * @author Johnathan Pulos
      **/
-    public function twigSortObjArray($related, $sortKey, $order = 'asc')
+    public function twigSortObjArray($data, $sortKey, $order = 'asc')
     {
         $order = strtolower($order);
         uasort(
-            $related,
+            $data,
             function ($a, $b) use ($sortKey, $order) {
                 $compare = strnatcmp($a[$sortKey], $b[$sortKey]);
                 if ($order == 'asc') {
@@ -68,7 +68,7 @@ class BoltUtilityBoxExtension extends SimpleExtension
                 }
             }
         );
-        return $related;
+        return $data;
     }
 
     /**
