@@ -16,6 +16,22 @@ Converts the given string to an MD5 hash.
 | -------- | -------- | ------- | ----------- |
 | string | Yes | N/A | The string to turn into a hash. |
 
+### Remove Objects from Array
+
+```
+{% set array = [{ 'id': 1, 'name': 'bob'}, { 'id': 2, 'name': 'joe'}, { 'id': 3, 'name': 'kelly'}] %}
+{% set removed = remove_record(array, [2]) %}
+{{dump(removed)}}
+```
+Removes the ids in arrayIds from the given array of objects.
+
+#### Arguments
+
+| Argument | Required | Default | Description |
+| -------- | -------- | ------- | ----------- |
+| array | Yes | N/A | The array of objects to filter. |
+| remove_id_array | Yes | N/A | An array of id's to remove from the array. |
+
 ### Sort Object Array
 
 ```
@@ -33,22 +49,6 @@ Sorts an object array by the given key's value.
 | array | Yes | N/A | The array of objects to sort. |
 | key | Yes | N/A | The object's key to sort by. |
 | direction | No | asc | Direction to sort with. (asc = Ascending, desc = Descending) |
-
-### Remove Objects from Array
-
-```
-{% set array = [{ 'id': 1, 'name': 'bob'}, { 'id': 2, 'name': 'joe'}, { 'id': 3, 'name': 'kelly'}] %}
-{% set removed = remove_record(array, [2]) %}
-{{dump(removed)}}
-```
-Removes the ids in arrayIds from the given array of objects.
-
-#### Arguments
-
-| Argument | Required | Default | Description |
-| -------- | -------- | ------- | ----------- |
-| array | Yes | N/A | The array of objects to filter. |
-| remove_id_array | Yes | N/A | An array of id's to remove from the array. |
 
 ## Development Notes
 
