@@ -45,6 +45,33 @@ class BoltUtilityBoxExtension extends SimpleExtension
     }
 
     /**
+     * Takes Bolt's related array ($related) and sorts it using the value of the array key ($sortKey)
+     *
+     * @param array $related Bolt's related() results
+     * @param string $sortKey the key to sort by
+     * @param string $order which order to sort (asc, desc) default: asc
+     * @return array the sorted objects
+     * @access public
+     * @author Johnathan Pulos
+     **/
+    public function twigRelatedSort($related, $sortKey, $order = 'asc')
+    {
+        $order = strtolower($order);
+        uasort(
+            $related,
+            function ($a, $b) use ($sortKey, $order) {
+                $compare = strnatcmp($a[$sortKey], $b[$sortKey]);
+                if ($order == 'desc') {
+                    return - $compare;
+                } else {
+                    return $compare;
+                }
+            }
+        );
+        return $related;
+    }
+
+    /**
      * Removes the given ids from the given object
      *
      * @param array $objectArray an array of Bolt objects to search through
@@ -73,6 +100,7 @@ class BoltUtilityBoxExtension extends SimpleExtension
     {
         return [
             'md5'           =>  'twigEncryptString',
+            'related_sort'  =>  'twigRelatedSort',
             'remove_record' =>  'twigRemoveRecords'
         ];
     }
