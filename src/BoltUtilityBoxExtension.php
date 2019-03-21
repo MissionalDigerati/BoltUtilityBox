@@ -45,6 +45,33 @@ class BoltUtilityBoxExtension extends SimpleExtension
     }
 
     /**
+     * Sorts an array of objects using the value of the array key ($sortKey)
+     *
+     * @param array $data Bolt's related() results
+     * @param string $sortKey the key to sort by
+     * @param string $order which order to sort (asc, desc) default: asc
+     * @return array the sorted objects
+     * @access public
+     * @author Johnathan Pulos
+     **/
+    public function twigSortObjArray($data, $sortKey, $order = 'asc')
+    {
+        $order = strtolower($order);
+        uasort(
+            $data,
+            function ($a, $b) use ($sortKey, $order) {
+                $compare = strnatcmp($a[$sortKey], $b[$sortKey]);
+                if ($order == 'asc') {
+                    return $compare;
+                } else {
+                    return - $compare;
+                }
+            }
+        );
+        return $data;
+    }
+
+    /**
      * Removes the given ids from the given object
      *
      * @param array $objectArray an array of Bolt objects to search through
@@ -72,8 +99,9 @@ class BoltUtilityBoxExtension extends SimpleExtension
     protected function registerTwigFunctions()
     {
         return [
-            'md5'           =>  'twigEncryptString',
-            'remove_record' =>  'twigRemoveRecords'
+            'md5'               =>  'twigEncryptString',
+            'sort_obj_array'    =>  'twigSortObjArray',
+            'remove_record'     =>  'twigRemoveRecords'
         ];
     }
 }
